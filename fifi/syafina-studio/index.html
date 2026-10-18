@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Syafina Studio — Fashion Wanita Elegant &amp; Modern</title>
+  <meta name="description" content="Syafina Studio — Temukan koleksi fashion wanita yang dirancang untuk menemani setiap momen dengan gaya yang elegan, nyaman, dan penuh percaya diri.">
+  <meta property="og:title" content="Syafina Studio — Fashion Wanita Elegant & Modern">
+  <meta property="og:description" content="Temukan koleksi fashion wanita yang dirancang untuk menemani setiap momen dengan gaya yang elegan, nyaman, dan penuh percaya diri.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- ===== NOTIFICATION BANNER ===== -->
+  <div class="promo-banner" id="promoBanner">
+    <p>✨ Selamat datang di Syafina Studio — Koleksi fashion wanita terbaru telah hadir! ✨</p>
+    <button class="promo-banner__close" id="promoBannerClose" aria-label="Tutup banner">&times;</button>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="mainHeader">
+    <div class="header__container">
+      <!-- Logo -->
+      <a href="#" class="header__logo" id="logoLink" aria-label="Syafina Studio — Beranda">
+        <span class="header__logo-text">SYAFINA</span>
+        <span class="header__logo-sub">STUDIO</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="header__nav" id="mainNav" aria-label="Navigasi utama">
+        <ul class="header__nav-list">
+          <li><a href="#" class="header__nav-link active" data-nav="home">Beranda</a></li>
+          <li><a href="#" class="header__nav-link" data-nav="shop">Shop</a></li>
+          <li class="header__nav-dropdown">
+            <a href="#" class="header__nav-link" data-nav="categories">Kategori <i class="fas fa-chevron-down"></i></a>
+            <ul class="header__dropdown-menu" id="categoryDropdown">
+              <!-- Populated by JS -->
+            </ul>
+          </li>
+          <li><a href="#" class="header__nav-link" data-nav="new-arrivals">Koleksi Terbaru</a></li>
+          <li><a href="#" class="header__nav-link" data-nav="about">Tentang Kami</a></li>
+          <li><a href="#" class="header__nav-link" data-nav="contact">Kontak</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header__actions">
+        <button class="header__action-btn" id="searchToggle" aria-label="Pencarian">
+          <i class="fas fa-search"></i>
+        </button>
+        <button class="header__action-btn" id="accountToggle" aria-label="Akun">
+          <i class="fas fa-user"></i>
+        </button>
+        <button class="header__action-btn" id="wishlistToggle" aria-label="Wishlist">
+          <i class="fas fa-heart"></i>
+          <span class="header__badge" id="wishlistBadge">0</span>
+        </button>
+        <button class="header__action-btn" id="cartToggle" aria-label="Keranjang belanja">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="header__badge" id="cartBadge">0</span>
+        </button>
+        <button class="header__hamburger" id="hamburgerBtn" aria-label="Buka menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-bar" id="searchBar" role="search" aria-label="Pencarian produk">
+      <div class="search-bar__container">
+        <input type="text" class="search-bar__input" id="searchInput" placeholder="Cari produk..." aria-label="Cari produk">
+        <button class="search-bar__btn" id="searchBtn" aria-label="Cari"><i class="fas fa-search"></i></button>
+        <button class="search-bar__close" id="searchClose" aria-label="Tutup pencarian">&times;</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MOBILE MENU DRAWER ===== -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu__overlay" id="mobileMenuOverlay"></div>
+    <div class="mobile-menu__panel">
+      <div class="mobile-menu__header">
+        <span class="header__logo-text">SYAFINA</span>
+        <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Tutup menu">&times;</button>
+      </div>
+      <nav class="mobile-menu__nav" aria-label="Navigasi mobile">
+        <ul class="mobile-menu__list">
+          <li><a href="#" class="mobile-menu__link" data-nav="home">Beranda</a></li>
+          <li><a href="#" class="mobile-menu__link" data-nav="shop">Shop</a></li>
+          <li class="mobile-menu__accordion">
+            <button class="mobile-menu__accordion-btn">Kategori <i class="fas fa-chevron-down"></i></button>
+            <ul class="mobile-menu__accordion-list" id="mobileCategoryList">
+              <!-- Populated by JS -->
+            </ul>
+          </li>
+          <li><a href="#" class="mobile-menu__link" data-nav="new-arrivals">Koleksi Terbaru</a></li>
+          <li><a href="#" class="mobile-menu__link" data-nav="about">Tentang Kami</a></li>
+          <li><a href="#" class="mobile-menu__link" data-nav="contact">Kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main id="mainContent">
+
+    <!-- ===== SECTION: HOME ===== -->
+    <section class="page-section active" id="sectionHome">
+
+      <!-- Hero -->
+      <div class="hero">
+        <div class="hero__container">
+          <div class="hero__content">
+            <p class="hero__label">New Collection</p>
+            <h1 class="hero__title">Discover Your Style,<br>Define Your <em>Elegance.</em></h1>
+            <p class="hero__desc">Temukan koleksi fashion wanita yang dirancang untuk menemani setiap momen dengan gaya yang elegan, nyaman, dan penuh percaya diri.</p>
+            <div class="hero__actions">
+              <button class="btn btn--primary" data-nav="shop">Shop Collection</button>
+              <button class="btn btn--outline" data-nav="new-arrivals">Explore New Arrivals</button>
+            </div>
+          </div>
+          <div class="hero__visual">
+            <div class="hero__image-wrapper">
+              <img src="images/hero-fashion.jpg" alt="Koleksi fashion wanita Syafina Studio" class="hero__image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 500%22><rect fill=%22%23F3C8D5%22 width=%22400%22 height=%22500%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 fill=%22%2349353D%22 font-size=%2220%22>Syafina Studio</text></svg>'">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category Section -->
+      <section class="categories-section" id="categoriesSection" aria-labelledby="categoriesTitle">
+        <div class="section-container">
+          <div class="section-header">
+            <h2 class="section-title" id="categoriesTitle">Kategori Produk</h2>
+            <p class="section-subtitle">Temukan koleksi berdasarkan kategori favoritmu</p>
+          </div>
+          <div class="categories-grid" id="categoriesGrid">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured / New Arrivals -->
+      <section class="products-section" id="newArrivalsSection" aria-labelledby="newArrivalsTitle">
+        <div class="section-container">
+          <div class="section-header">
+            <h2 class="section-title" id="newArrivalsTitle">Koleksi Terbaru</h2>
+            <p class="section-subtitle">Produk terbaru yang baru saja hadir di Syafina Studio</p>
+          </div>
+          <div class="products-grid" id="newArrivalsGrid">
+            <!-- Populated by JS -->
+          </div>
+          <div class="section-cta">
+            <button class="btn btn--outline" data-nav="shop">Lihat Semua Produk</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Collection -->
+      <section class="products-section products-section--featured" id="featuredSection" aria-labelledby="featuredTitle">
+        <div class="section-container">
+          <div class="section-header">
+            <h2 class="section-title" id="featuredTitle">Koleksi Unggulan</h2>
+            <p class="section-subtitle">Pilihan terbaik yang paling disukai</p>
+          </div>
+          <div class="products-grid" id="featuredGrid">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- About Us Section -->
+      <section class="about-section" id="aboutSection" aria-labelledby="aboutTitle">
+        <div class="section-container">
+          <div class="about-grid">
+            <div class="about-image">
+              <img src="images/hero-fashion.jpg" alt="Tentang Syafina Studio" loading="lazy" onerror="this.style.display='none'">
+            </div>
+            <div class="about-content">
+              <h2 class="section-title" id="aboutTitle">Tentang Syafina Studio</h2>
+              <p class="about-text">Syafina Studio hadir sebagai destinasi fashion wanita yang mengedepankan keanggunan, kenyamanan, dan gaya modern. Setiap koleksi dirancang dengan memadukan estetika feminin dan sentuhan contemporary.</p>
+              <p class="about-text">Kami percaya bahwa setiap wanita berhak tampil percaya diri dengan pakaian yang tidak hanya indah dipandang, tetapi juga nyaman dikenakan dalam berbagai kesempatan — dari keseharian kasual hingga acara semi-formal.</p>
+              <div class="about-values">
+                <div class="about-value">
+                  <i class="fas fa-gem"></i>
+                  <h3>Desain Elegan</h3>
+                  <p>Koleksi yang dirancang dengan perhatian pada detail dan estetika feminin modern.</p>
+                </div>
+                <div class="about-value">
+                  <i class="fas fa-leaf"></i>
+                  <h3>Kenyamanan</h3>
+                  <p>Setiap produk dipilih dengan mengutamakan kenyamanan saat dikenakan.</p>
+                </div>
+                <div class="about-value">
+                  <i class="fas fa-heart"></i>
+                  <h3>Gaya Personal</h3>
+                  <p>Membantu setiap wanita menemukan dan mengekspresikan gaya pribadinya.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section class="contact-section" id="contactSection" aria-labelledby="contactTitle">
+        <div class="section-container">
+          <div class="section-header">
+            <h2 class="section-title" id="contactTitle">Hubungi Kami</h2>
+            <p class="section-subtitle">Punya pertanyaan? Jangan ragu untuk menghubungi kami</p>
+          </div>
+          <div class="contact-grid">
+            <div class="contact-info">
+              <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <div>
+                  <h3>Email</h3>
+                  <p class="contact-placeholder">Email belum dikonfigurasi</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <div>
+                  <h3>Telepon / WhatsApp</h3>
+                  <p class="contact-placeholder">Nomor telepon belum dikonfigurasi</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                  <h3>Lokasi</h3>
+                  <p class="contact-placeholder">Alamat belum dikonfigurasi</p>
+                </div>
+              </div>
+              <div class="contact-social">
+                <h3>Media Sosial</h3>
+                <div class="contact-social__links">
+                  <span class="contact-placeholder">Tautan media sosial belum dikonfigurasi</span>
+                </div>
+              </div>
+            </div>
+            <div class="contact-faq">
+              <h3>Pertanyaan Umum (FAQ)</h3>
+              <div class="faq-list">
+                <div class="faq-item">
+                  <button class="faq-question" aria-expanded="false">Bagaimana cara memesan produk? <i class="fas fa-chevron-down"></i></button>
+                  <div class="faq-answer"><p>Pilih produk yang diinginkan, tentukan ukuran dan warna, lalu tambahkan ke keranjang. Setelah selesai berbelanja, lanjutkan ke proses checkout dan isi data pengiriman.</p></div>
+                </div>
+                <div class="faq-item">
+                  <button class="faq-question" aria-expanded="false">Berapa lama estimasi pengiriman? <i class="fas fa-chevron-down"></i></button>
+                  <div class="faq-answer"><p>Estimasi pengiriman bervariasi tergantung lokasi. Informasi detail mengenai pengiriman akan diperbarui setelah layanan pengiriman dikonfigurasi.</p></div>
+                </div>
+                <div class="faq-item">
+                  <button class="faq-question" aria-expanded="false">Apakah bisa retur atau tukar barang? <i class="fas fa-chevron-down"></i></button>
+                  <div class="faq-answer"><p>Kebijakan retur dan penukaran sedang dalam proses penyusunan. Silakan hubungi kami untuk informasi lebih lanjut.</p></div>
+                </div>
+                <div class="faq-item">
+                  <button class="faq-question" aria-expanded="false">Metode pembayaran apa saja yang tersedia? <i class="fas fa-chevron-down"></i></button>
+                  <div class="faq-answer"><p>Saat ini tersedia simulasi pembayaran untuk demo. Integrasi payment gateway resmi akan ditambahkan di masa mendatang.</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ===== SECTION: SHOP / KATALOG ===== -->
+    <section class="page-section" id="sectionShop">
+      <div class="shop">
+        <div class="section-container">
+          <div class="shop__header">
+            <h2 class="section-title">Katalog Produk</h2>
+            <p class="shop__count" id="shopCount">Menampilkan 0 produk</p>
+          </div>
+
+          <div class="shop__layout">
+            <!-- Filters Sidebar -->
+            <aside class="shop__filters" id="shopFilters">
+              <div class="shop__filters-header">
+                <h3>Filter</h3>
+                <button class="btn btn--text" id="resetFilters">Reset</button>
+              </div>
+
+              <!-- Search -->
+              <div class="filter-group">
+                <label for="filterSearch" class="filter-label">Pencarian</label>
+                <input type="text" id="filterSearch" class="filter-input" placeholder="Cari nama produk...">
+              </div>
+
+              <!-- Category -->
+              <div class="filter-group">
+                <h4 class="filter-label">Kategori</h4>
+                <div class="filter-options" id="filterCategory">
+                  <!-- Populated by JS -->
+                </div>
+              </div>
+
+              <!-- Size -->
+              <div class="filter-group">
+                <h4 class="filter-label">Ukuran</h4>
+                <div class="filter-options filter-options--sizes" id="filterSize">
+                  <!-- Populated by JS -->
+                </div>
+              </div>
+
+              <!-- Color -->
+              <div class="filter-group">
+                <h4 class="filter-label">Warna</h4>
+                <div class="filter-options" id="filterColor">
+                  <!-- Populated by JS -->
+                </div>
+              </div>
+
+              <!-- Price Range -->
+              <div class="filter-group">
+                <h4 class="filter-label">Rentang Harga</h4>
+                <div class="filter-price">
+                  <input type="number" id="filterPriceMin" class="filter-input filter-input--price" placeholder="Min" min="0">
+                  <span class="filter-price__sep">—</span>
+                  <input type="number" id="filterPriceMax" class="filter-input filter-input--price" placeholder="Max" min="0">
+                </div>
+              </div>
+
+              <!-- Sort -->
+              <div class="filter-group">
+                <label for="filterSort" class="filter-label">Urutkan</label>
+                <select id="filterSort" class="filter-select">
+                  <option value="default">Default</option>
+                  <option value="price-asc">Harga Terendah</option>
+                  <option value="price-desc">Harga Tertinggi</option>
+                  <option value="newest">Terbaru</option>
+                </select>
+              </div>
+
+              <button class="btn btn--primary btn--full" id="applyFiltersMobile" style="display:none;">Terapkan Filter</button>
+            </aside>
+
+            <!-- Mobile filter toggle -->
+            <button class="btn btn--outline shop__filter-toggle" id="filterToggleMobile">
+              <i class="fas fa-sliders-h"></i> Filter
+            </button>
+
+            <!-- Products Grid -->
+            <div class="shop__products">
+              <div class="products-grid" id="shopGrid">
+                <!-- Populated by JS -->
+              </div>
+              <div class="shop__empty" id="shopEmpty" style="display:none;">
+                <i class="fas fa-search"></i>
+                <p>Produk yang kamu cari belum ditemukan.</p>
+                <p>Coba ubah kata kunci atau filter.</p>
+                <button class="btn btn--outline" id="resetFiltersEmpty">Reset Filter</button>
+              </div>
+              <div class="shop__loading" id="shopLoading" style="display:none;">
+                <div class="spinner"></div>
+                <p>Memuat produk...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== PRODUCT DETAIL MODAL ===== -->
+  <div class="modal" id="productModal" aria-hidden="true" role="dialog" aria-label="Detail produk">
+    <div class="modal__overlay" id="productModalOverlay"></div>
+    <div class="modal__content modal__content--product">
+      <button class="modal__close" id="productModalClose" aria-label="Tutup detail produk">&times;</button>
+      <div class="product-detail" id="productDetail">
+        <div class="product-detail__gallery">
+          <div class="product-detail__main-image">
+            <img id="productMainImage" src="" alt="">
+            <span class="product-detail__label" id="productLabel"></span>
+          </div>
+          <div class="product-detail__thumbnails" id="productThumbnails">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+        <div class="product-detail__info">
+          <p class="product-detail__category" id="productCategory"></p>
+          <h2 class="product-detail__name" id="productName"></h2>
+          <div class="product-detail__price">
+            <span class="product-detail__price-current" id="productPrice"></span>
+            <span class="product-detail__price-original" id="productOriginalPrice"></span>
+            <span class="product-detail__discount-badge" id="productDiscountBadge"></span>
+          </div>
+          <p class="product-detail__desc" id="productDesc"></p>
+          <div class="product-detail__stock" id="productStock"></div>
+
+          <div class="product-detail__options">
+            <div class="product-detail__option" id="productSizeOption">
+              <label class="filter-label">Ukuran</label>
+              <div class="size-options" id="productSizes">
+                <!-- Populated by JS -->
+              </div>
+              <p class="product-detail__error" id="sizeError"></p>
+            </div>
+            <div class="product-detail__option" id="productColorOption">
+              <label class="filter-label">Warna</label>
+              <div class="color-options" id="productColors">
+                <!-- Populated by JS -->
+              </div>
+              <p class="product-detail__error" id="colorError"></p>
+            </div>
+          </div>
+
+          <div class="product-detail__quantity">
+            <label class="filter-label">Jumlah</label>
+            <div class="quantity-control">
+              <button class="quantity-btn" id="qtyMinus" aria-label="Kurangi jumlah">−</button>
+              <input type="number" class="quantity-input" id="qtyInput" value="1" min="1" aria-label="Jumlah">
+              <button class="quantity-btn" id="qtyPlus" aria-label="Tambah jumlah">+</button>
+            </div>
+          </div>
+
+          <div class="product-detail__actions">
+            <button class="btn btn--primary btn--full" id="addToCartBtn">
+              <i class="fas fa-shopping-bag"></i> Tambah ke Keranjang
+            </button>
+            <button class="btn btn--accent btn--full" id="buyNowBtn">
+              Beli Sekarang
+            </button>
+            <button class="btn btn--outline btn--icon" id="addToWishlistBtn" aria-label="Tambah ke wishlist">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CART DRAWER ===== -->
+  <div class="drawer" id="cartDrawer" aria-hidden="true" role="dialog" aria-label="Keranjang belanja">
+    <div class="drawer__overlay" id="cartDrawerOverlay"></div>
+    <div class="drawer__panel">
+      <div class="drawer__header">
+        <h2 class="drawer__title"><i class="fas fa-shopping-bag"></i> Keranjang Belanja</h2>
+        <button class="drawer__close" id="cartDrawerClose" aria-label="Tutup keranjang">&times;</button>
+      </div>
+      <div class="drawer__body" id="cartDrawerBody">
+        <div class="cart-items" id="cartItems">
+          <!-- Populated by JS -->
+        </div>
+        <div class="cart-empty" id="cartEmpty">
+          <i class="fas fa-shopping-bag"></i>
+          <p>Keranjang belanja kosong</p>
+          <button class="btn btn--outline" data-nav="shop">Mulai Belanja</button>
+        </div>
+      </div>
+      <div class="drawer__footer" id="cartDrawerFooter">
+        <div class="cart-summary">
+          <div class="cart-summary__row">
+            <span>Subtotal</span>
+            <span id="cartSubtotal">Rp 0</span>
+          </div>
+          <div class="cart-summary__row cart-summary__row--total">
+            <span>Total</span>
+            <span id="cartTotal">Rp 0</span>
+          </div>
+        </div>
+        <div class="cart-actions">
+          <button class="btn btn--outline btn--full" data-nav="shop">Lanjut Belanja</button>
+          <button class="btn btn--primary btn--full" id="checkoutBtn">Checkout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== WISHLIST DRAWER ===== -->
+  <div class="drawer drawer--left" id="wishlistDrawer" aria-hidden="true" role="dialog" aria-label="Daftar favorit">
+    <div class="drawer__overlay" id="wishlistDrawerOverlay"></div>
+    <div class="drawer__panel">
+      <div class="drawer__header">
+        <h2 class="drawer__title"><i class="fas fa-heart"></i> Wishlist</h2>
+        <button class="drawer__close" id="wishlistDrawerClose" aria-label="Tutup wishlist">&times;</button>
+      </div>
+      <div class="drawer__body" id="wishlistDrawerBody">
+        <div class="wishlist-items" id="wishlistItems">
+          <!-- Populated by JS -->
+        </div>
+        <div class="cart-empty" id="wishlistEmpty">
+          <i class="fas fa-heart"></i>
+          <p>Belum ada produk favorit</p>
+          <button class="btn btn--outline" data-nav="shop">Jelajahi Produk</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== AUTH MODAL ===== -->
+  <div class="modal" id="authModal" aria-hidden="true" role="dialog" aria-label="Autentikasi">
+    <div class="modal__overlay" id="authModalOverlay"></div>
+    <div class="modal__content modal__content--auth">
+      <button class="modal__close" id="authModalClose" aria-label="Tutup">&times;</button>
+
+      <!-- Login Form -->
+      <div class="auth-form" id="loginForm">
+        <h2 class="auth-form__title">Masuk ke Akun</h2>
+        <p class="auth-form__subtitle">Selamat datang kembali di Syafina Studio</p>
+        <div class="auth-form__alert" id="loginAlert" role="alert"></div>
+        <form id="loginFormEl" novalidate>
+          <div class="form-group">
+            <label for="loginEmail" class="form-label">Email</label>
+            <input type="email" id="loginEmail" class="form-input" placeholder="email@contoh.com" required>
+            <p class="form-error" id="loginEmailError"></p>
+          </div>
+          <div class="form-group">
+            <label for="loginPassword" class="form-label">Password</label>
+            <div class="form-input-wrapper">
+              <input type="password" id="loginPassword" class="form-input" placeholder="Masukkan password" required>
+              <button type="button" class="form-toggle-password" aria-label="Tampilkan password"><i class="fas fa-eye"></i></button>
+            </div>
+            <p class="form-error" id="loginPasswordError"></p>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full" id="loginSubmit">
+            <span class="btn__text">Masuk</span>
+            <span class="btn__loading" style="display:none;"><span class="spinner spinner--small"></span></span>
+          </button>
+        </form>
+        <p class="auth-form__switch">Belum punya akun? <button class="btn btn--text" id="showRegister">Daftar sekarang</button></p>
+        <p class="auth-form__forgot"><button class="btn btn--text" id="showForgotPassword">Lupa password?</button></p>
+      </div>
+
+      <!-- Register Form -->
+      <div class="auth-form" id="registerForm" style="display:none;">
+        <h2 class="auth-form__title">Buat Akun Baru</h2>
+        <p class="auth-form__subtitle">Bergabung dengan Syafina Studio</p>
+        <div class="auth-form__alert" id="registerAlert" role="alert"></div>
+        <form id="registerFormEl" novalidate>
+          <div class="form-group">
+            <label for="registerName" class="form-label">Nama Lengkap</label>
+            <input type="text" id="registerName" class="form-input" placeholder="Nama lengkap" required>
+            <p class="form-error" id="registerNameError"></p>
+          </div>
+          <div class="form-group">
+            <label for="registerEmail" class="form-label">Email</label>
+            <input type="email" id="registerEmail" class="form-input" placeholder="email@contoh.com" required>
+            <p class="form-error" id="registerEmailError"></p>
+          </div>
+          <div class="form-group">
+            <label for="registerPhone" class="form-label">Nomor Telepon <span class="form-optional">(opsional)</span></label>
+            <input type="tel" id="registerPhone" class="form-input" placeholder="08xxxxxxxxxx">
+          </div>
+          <div class="form-group">
+            <label for="registerPassword" class="form-label">Password</label>
+            <div class="form-input-wrapper">
+              <input type="password" id="registerPassword" class="form-input" placeholder="Minimal 8 karakter" required>
+              <button type="button" class="form-toggle-password" aria-label="Tampilkan password"><i class="fas fa-eye"></i></button>
+            </div>
+            <p class="form-error" id="registerPasswordError"></p>
+          </div>
+          <div class="form-group">
+            <label for="registerConfirmPassword" class="form-label">Konfirmasi Password</label>
+            <div class="form-input-wrapper">
+              <input type="password" id="registerConfirmPassword" class="form-input" placeholder="Ulangi password" required>
+              <button type="button" class="form-toggle-password" aria-label="Tampilkan password"><i class="fas fa-eye"></i></button>
+            </div>
+            <p class="form-error" id="registerConfirmPasswordError"></p>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full" id="registerSubmit">
+            <span class="btn__text">Daftar</span>
+            <span class="btn__loading" style="display:none;"><span class="spinner spinner--small"></span></span>
+          </button>
+        </form>
+        <p class="auth-form__switch">Sudah punya akun? <button class="btn btn--text" id="showLogin">Masuk</button></p>
+      </div>
+
+      <!-- Forgot Password Notice -->
+      <div class="auth-form" id="forgotPasswordForm" style="display:none;">
+        <h2 class="auth-form__title">Lupa Password</h2>
+        <div class="auth-form__notice">
+          <i class="fas fa-info-circle"></i>
+          <p>Fitur reset password belum tersedia saat ini. Silakan hubungi admin untuk bantuan pemulihan akun.</p>
+        </div>
+        <button class="btn btn--outline btn--full" id="backToLogin">Kembali ke Login</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CHECKOUT SECTION (shown as full-page overlay) ===== -->
+  <div class="modal" id="checkoutModal" aria-hidden="true" role="dialog" aria-label="Checkout">
+    <div class="modal__overlay" id="checkoutModalOverlay"></div>
+    <div class="modal__content modal__content--checkout">
+      <button class="modal__close" id="checkoutModalClose" aria-label="Tutup checkout">&times;</button>
+      <div class="checkout" id="checkoutContent">
+        <h2 class="checkout__title">Checkout</h2>
+        <div class="checkout__layout">
+          <!-- Shipping Form -->
+          <div class="checkout__form">
+            <h3 class="checkout__section-title">Informasi Pengiriman</h3>
+            <form id="checkoutFormEl" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="checkoutName" class="form-label">Nama Penerima *</label>
+                  <input type="text" id="checkoutName" class="form-input" required>
+                  <p class="form-error" id="checkoutNameError"></p>
+                </div>
+                <div class="form-group">
+                  <label for="checkoutPhone" class="form-label">Nomor Telepon *</label>
+                  <input type="tel" id="checkoutPhone" class="form-input" placeholder="08xxxxxxxxxx" required>
+                  <p class="form-error" id="checkoutPhoneError"></p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="checkoutEmail" class="form-label">Email</label>
+                <input type="email" id="checkoutEmail" class="form-input">
+              </div>
+              <div class="form-group">
+                <label for="checkoutAddress" class="form-label">Alamat Lengkap *</label>
+                <textarea id="checkoutAddress" class="form-input form-textarea" rows="3" required></textarea>
+                <p class="form-error" id="checkoutAddressError"></p>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="checkoutProvince" class="form-label">Provinsi *</label>
+                  <input type="text" id="checkoutProvince" class="form-input" required>
+                  <p class="form-error" id="checkoutProvinceError"></p>
+                </div>
+                <div class="form-group">
+                  <label for="checkoutCity" class="form-label">Kota / Kabupaten *</label>
+                  <input type="text" id="checkoutCity" class="form-input" required>
+                  <p class="form-error" id="checkoutCityError"></p>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="checkoutDistrict" class="form-label">Kecamatan</label>
+                  <input type="text" id="checkoutDistrict" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label for="checkoutPostal" class="form-label">Kode Pos</label>
+                  <input type="text" id="checkoutPostal" class="form-input">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="checkoutNotes" class="form-label">Catatan Pesanan <span class="form-optional">(opsional)</span></label>
+                <textarea id="checkoutNotes" class="form-input form-textarea" rows="2"></textarea>
+              </div>
+
+              <h3 class="checkout__section-title">Metode Pengiriman</h3>
+              <div class="checkout__shipping-methods" id="shippingMethods">
+                <label class="radio-card">
+                  <input type="radio" name="shipping" value="regular" checked>
+                  <div class="radio-card__content">
+                    <strong>Regular</strong>
+                    <span>Estimasi 3-5 hari kerja</span>
+                    <span class="radio-card__price">Rp 15.000 <em>(simulasi)</em></span>
+                  </div>
+                </label>
+                <label class="radio-card">
+                  <input type="radio" name="shipping" value="express">
+                  <div class="radio-card__content">
+                    <strong>Express</strong>
+                    <span>Estimasi 1-2 hari kerja</span>
+                    <span class="radio-card__price">Rp 25.000 <em>(simulasi)</em></span>
+                  </div>
+                </label>
+              </div>
+
+              <h3 class="checkout__section-title">Metode Pembayaran</h3>
+              <p class="checkout__demo-notice"><i class="fas fa-info-circle"></i> Semua metode pembayaran berstatus simulasi / demo. Tidak ada transaksi uang sungguhan yang diproses.</p>
+              <div class="checkout__payment-methods" id="paymentMethods">
+                <label class="radio-card">
+                  <input type="radio" name="payment" value="bank_transfer" checked>
+                  <div class="radio-card__content">
+                    <strong>Transfer Bank (Demo)</strong>
+                    <span>Simulasi transfer bank</span>
+                  </div>
+                </label>
+                <label class="radio-card">
+                  <input type="radio" name="payment" value="cod">
+                  <div class="radio-card__content">
+                    <strong>COD (Demo)</strong>
+                    <span>Bayar di tempat — simulasi</span>
+                  </div>
+                </label>
+              </div>
+            </form>
+          </div>
+
+          <!-- Order Summary -->
+          <div class="checkout__summary">
+            <h3 class="checkout__section-title">Ringkasan Pesanan</h3>
+            <div class="checkout__items" id="checkoutItems">
+              <!-- Populated by JS -->
+            </div>
+            <div class="checkout__totals">
+              <div class="checkout__total-row">
+                <span>Subtotal</span>
+                <span id="checkoutSubtotal">Rp 0</span>
+              </div>
+              <div class="checkout__total-row">
+                <span>Ongkos Kirim <em>(estimasi)</em></span>
+                <span id="checkoutShipping">Rp 15.000</span>
+              </div>
+              <div class="checkout__total-row checkout__total-row--grand">
+                <span>Total Pembayaran</span>
+                <span id="checkoutGrandTotal">Rp 0</span>
+              </div>
+            </div>
+            <div class="checkout__alert" id="checkoutAlert" role="alert"></div>
+            <button class="btn btn--primary btn--full btn--lg" id="placeOrderBtn">
+              <span class="btn__text">Buat Pesanan</span>
+              <span class="btn__loading" style="display:none;"><span class="spinner spinner--small"></span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ORDER SUCCESS MODAL ===== -->
+  <div class="modal" id="orderSuccessModal" aria-hidden="true" role="dialog" aria-label="Pesanan berhasil">
+    <div class="modal__overlay" id="orderSuccessOverlay"></div>
+    <div class="modal__content modal__content--success">
+      <div class="order-success">
+        <div class="order-success__icon"><i class="fas fa-check-circle"></i></div>
+        <h2>Pesanan Berhasil Dibuat!</h2>
+        <p>Terima kasih telah berbelanja di Syafina Studio.</p>
+        <div class="order-success__details" id="orderSuccessDetails">
+          <!-- Populated by JS -->
+        </div>
+        <p class="checkout__demo-notice"><i class="fas fa-info-circle"></i> Ini adalah demo. Tidak ada transaksi pembayaran sungguhan yang diproses.</p>
+        <div class="order-success__actions">
+          <button class="btn btn--primary" id="viewOrderBtn">Lihat Pesanan</button>
+          <button class="btn btn--outline" data-nav="shop">Lanjut Belanja</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ACCOUNT / PROFILE PANEL ===== -->
+  <div class="drawer" id="accountDrawer" aria-hidden="true" role="dialog" aria-label="Akun saya">
+    <div class="drawer__overlay" id="accountDrawerOverlay"></div>
+    <div class="drawer__panel drawer__panel--wide">
+      <div class="drawer__header">
+        <h2 class="drawer__title"><i class="fas fa-user"></i> Akun Saya</h2>
+        <button class="drawer__close" id="accountDrawerClose" aria-label="Tutup akun">&times;</button>
+      </div>
+      <div class="drawer__body" id="accountDrawerBody">
+        <!-- Profile Info -->
+        <div class="account-profile" id="accountProfile">
+          <div class="account-profile__avatar"><i class="fas fa-user-circle"></i></div>
+          <h3 id="accountName"></h3>
+          <p id="accountEmail"></p>
+          <p id="accountPhone"></p>
+        </div>
+
+        <!-- Orders -->
+        <div class="account-orders">
+          <h3 class="account-section-title">Riwayat Pesanan</h3>
+          <div id="ordersList">
+            <!-- Populated by JS -->
+          </div>
+          <div class="cart-empty" id="ordersEmpty">
+            <i class="fas fa-receipt"></i>
+            <p>Belum ada riwayat pesanan</p>
+          </div>
+        </div>
+
+        <button class="btn btn--outline btn--full" id="logoutBtn" style="margin-top:1.5rem;">
+          <i class="fas fa-sign-out-alt"></i> Keluar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TOAST NOTIFICATION ===== -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" id="mainFooter">
+    <div class="footer__container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <span class="header__logo-text">SYAFINA</span>
+            <span class="header__logo-sub">STUDIO</span>
+          </div>
+          <p class="footer__desc">Destinasi fashion wanita yang mengedepankan keanggunan, kenyamanan, dan gaya modern untuk setiap momen.</p>
+        </div>
+        <div class="footer__links">
+          <h4>Navigasi</h4>
+          <ul>
+            <li><a href="#" data-nav="home">Beranda</a></li>
+            <li><a href="#" data-nav="shop">Shop</a></li>
+            <li><a href="#" data-nav="new-arrivals">Koleksi Terbaru</a></li>
+            <li><a href="#" data-nav="about">Tentang Kami</a></li>
+            <li><a href="#" data-nav="contact">Kontak</a></li>
+          </ul>
+        </div>
+        <div class="footer__links">
+          <h4>Kategori</h4>
+          <ul id="footerCategories">
+            <!-- Populated by JS -->
+          </ul>
+        </div>
+        <div class="footer__links">
+          <h4>Informasi</h4>
+          <ul>
+            <li><span class="footer__placeholder">Kebijakan privasi (segera hadir)</span></li>
+            <li><span class="footer__placeholder">Kebijakan pengiriman (segera hadir)</span></li>
+            <li><span class="footer__placeholder">Kebijakan retur (segera hadir)</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; <span id="footerYear"></span> Syafina Studio. Hak cipta dilindungi.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
